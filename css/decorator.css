@@ -3,6 +3,7 @@ main{
   display: inline-block;
   margin-top: 2%;
   padding: 15px;
+  width: 90%;
   position: relative;
   background-color:#6ab7f5;
   align-self: center;
