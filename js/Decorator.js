@@ -5,7 +5,7 @@ const creatElement = (tag, className) => {
     element.className = className;
     return element; 
 }
-console.log("criou o array"); 
+
 var itensBase = [
     new Item('k1', 'pond', 'lago'),
     new Item('k2', 'pound', 'curral'),
@@ -16,6 +16,8 @@ var itensBase = [
 
 var itemsListWord = [];
 var itemsListTranslation = [];
+let firstButton = null;
+let secondButton = null; 
 
 itensBase.forEach(
     (item) => {
@@ -34,8 +36,36 @@ while(myIndex > 0){
     myIndex--;
 }
 
+const checkPair = () => {
+    if (firstButton.getAttribute('data-key') === secondButton.getAttribute('data-key')){
+        firstButton = null;
+        secondButton = null;
+    }else{
+        setTimeout(()=>{
+            firstButton.classList.remove('marked');
+            secondButton.classList.remove('marked');
+
+            firstButton = null;
+            secondButton = null;
+        },500);
+    }
+}
+
 const myClick = ({target}) =>{
-    alert(target.getAttribute('data-key'));
+ 
+    if(target.className.includes('marked')){
+        return;
+    }
+
+    target.classList.add('marked');
+
+
+    if (firstButton === null){
+        firstButton = target;
+    }else{
+        secondButton = target;
+        checkPair();
+    }
 }
 
 const createButton = (element) => {
