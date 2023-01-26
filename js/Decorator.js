@@ -16,8 +16,8 @@ var itensBase = [
 
 var itemsListWord = [];
 var itemsListTranslation = [];
-let firstButton = null;
-let secondButton = null; 
+let firstCard = null;
+let secondCard = null; 
 
 itensBase.forEach(
     (item) => {
@@ -37,16 +37,16 @@ while(myIndex > 0){
 }
 
 const checkPair = () => {
-    if (firstButton.getAttribute('data-key') === secondButton.getAttribute('data-key')){
-        firstButton = null;
-        secondButton = null;
+    if (firstCard.getAttribute('data-key') === secondCard.getAttribute('data-key')){
+        firstCard = null;
+        secondCard = null;
     }else{
         setTimeout(()=>{
-            firstButton.classList.remove('marked');
-            secondButton.classList.remove('marked');
+            firstCard.classList.remove('marked');
+            secondCard.classList.remove('marked');
 
-            firstButton = null;
-            secondButton = null;
+            firstCard = null;
+            secondCard = null;
         },500);
     }
 }
@@ -60,28 +60,28 @@ const myClick = ({target}) =>{
     target.classList.add('marked');
 
 
-    if (firstButton === null){
-        firstButton = target;
+    if (firstCard === null){
+        firstCard = target;
     }else{
-        secondButton = target;
+        secondCard = target;
         checkPair();
     }
 }
 
-const createButton = (element) => {
-    const buttonItem = creatElement('BUTTON','card');
+const createCard = (element) => {
+    const cardItem = creatElement('div','card');
     var myLabel = document.createTextNode(element.getValue()); 
-    buttonItem.addEventListener('click',myClick);
-    buttonItem.appendChild(myLabel);
-    buttonItem.setAttribute('data-key',element.getKey())
-    return buttonItem;
+    cardItem.addEventListener('click',myClick);
+    cardItem.appendChild(myLabel);
+    cardItem.setAttribute('data-key',element.getKey())
+    return cardItem;
 }
 
 loadPage = () => {
     let counIndex = 0;
     while (counIndex < itemsListTranslation.length) {
-        grid.appendChild(createButton(itemsListWord[counIndex]));
-        grid.appendChild(createButton(itemsListTranslation[counIndex]));
+        grid.appendChild(createCard(itemsListWord[counIndex]));
+        grid.appendChild(createCard(itemsListTranslation[counIndex]));
         counIndex++;
     }
 }
