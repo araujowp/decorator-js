@@ -38,6 +38,8 @@ while(myIndex > 0){
 
 const checkPair = () => {
     if (firstCard.getAttribute('data-key') === secondCard.getAttribute('data-key')){
+        firstCard.classList.add('correct');
+        secondCard.classList.add('correct');
         firstCard = null;
         secondCard = null;
     }else{

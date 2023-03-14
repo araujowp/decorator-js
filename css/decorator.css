@@ -1,42 +1,51 @@
-
-main{
+main {
   display: inline-block;
   margin-top: 2%;
   padding: 15px;
   width: 90%;
   position: relative;
-  background-color:#6ab7f5;
   align-self: center;
   border-radius: 5px;
 }
 
-body{
+body {
   text-align: center;
-  background: linear-gradient(to bottom, #6ab7f5,#fff);
   min-height: 100vh;
 }
 
 .grid {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 15px;
-   width: 100%;
-   max-width: 800px;
-   margin: 0 auto;
-   border-color: blue;
-   border-top-color:black;
- }
- 
- .card {
-   aspect-ratio: 4/1;
-   width: 100%;
-   border-radius: 5px;
-   position: relative;
-   transition: all 400ms ease;
-   transform-style: preserve-3d;
-   background-color: aliceblue;
- }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-color: blue;
+}
 
- .marked{
-  border-color: aquamarine;
- }
+.card {
+  aspect-ratio: 4/1;
+  width: 100%;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: lightgrey;
+  position: relative;
+  transition: all 400ms ease;
+  line-height: 90px;
+  border-width: 3px;
+  font-size: xx-large;
+}
+
+.marked {
+  border-color: rgb(100, 149, 237);
+  color: rgb(100, 149, 237);
+  background-color: rgba(100, 149, 237, 0.1);
+}
+
+.correct {
+  border-color: rgb(80,114,21);
+  color: rgb(80,114,21);
+  background-color: rgba(80, 114, 21, 0.1);
+}
+
+
