@@ -6,13 +6,17 @@ const creatElement = (tag, className) => {
     return element; 
 }
 
-var itensBase = [
-    new Item('k1', 'pond', 'lago'),
-    new Item('k2', 'pound', 'curral'),
-    new Item('k3', 'care', 'cuidado'),
-    new Item('k4', 'shut', 'fechar'),
-    new Item('k5', 'settlement', 'assentamento')
-];
+var _wordRepository = new WordRepository();
+var _records = _wordRepository.getAll();
+var _shuffleRecords = new Shuffle(_records).get();
+var _sliceRecords = _shuffleRecords.slice(0,7); 
+var itensBase  = [];
+var _count  = 0;
+
+for (var _count = 0; _count < _sliceRecords.length && _count < 7; _count++) {
+    var record = _sliceRecords[_count];
+    itensBase.push(new Item('k' + (_count + 1), record[0], record[1]));
+}
 
 var itemsListWord = [];
 var itemsListTranslation = [];
@@ -26,15 +30,7 @@ itensBase.forEach(
     }
 )
 
-//shuffle
-let myIndex = itemsListTranslation.length;
-while(myIndex > 0){
-    const shuffleIndex = Math.floor(Math.random() * myIndex);
-    currentItem = itemsListTranslation[myIndex -1];
-    itemsListTranslation[myIndex -1] = itemsListTranslation[[shuffleIndex]]
-    itemsListTranslation[shuffleIndex] = currentItem;
-    myIndex--;
-}
+itemsListTranslation = new Shuffle(itemsListTranslation).get();
 
 const checkPair = () => {
     if (firstCard.getAttribute('data-key') === secondCard.getAttribute('data-key')){
