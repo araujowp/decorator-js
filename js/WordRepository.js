@@ -32,7 +32,7 @@ class WordRepository {
             ['go into', 'entrar em'],
             ['goal', 'objetivo'],
             ['hiking', 'caminhada'],
-            ['indoors', 'em ambientes internos'],
+            ['indoors', 'ambientes internos'],
             ['issue', 'questão'],
             ['knew', 'sabia'],
             ['laugh', 'rir'],
